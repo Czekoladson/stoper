@@ -1,0 +1,38 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(2,3,4,5,6,7);
+#define przycisk_prawy 8
+int czas_ze_stopera = 0;
+void setup() {
+  pinMode(przycisk_prawy,INPUT_PULLUP);
+  lcd.begin(16,2);
+  lcd.setCursor(0,0);
+}
+
+void loop() {
+
+  if (digitalRead(przycisk_prawy) == HIGH){
+    lcd.setCursor(0,0);
+    lcd.print("                ");  
+    lcd.setCursor(0,1);
+    lcd.print("                ");  
+    lcd.setCursor(0,0);
+    lcd.print("NADUS PRZYCISK!");
+    lcd.noDisplay();
+    delay(1000);
+    lcd.display();
+    delay(1000);
+    czas_ze_stopera = 0;
+  }
+  if (digitalRead(przycisk_prawy) == LOW){
+    lcd.setCursor(0,0);
+    lcd.print("                "); 
+    lcd.setCursor(0,0);
+    lcd.print("Czas to:");
+    lcd.setCursor(0,1);
+    lcd.print("                ");  
+    lcd.setCursor(0,1);
+    lcd.print(czas_ze_stopera);
+    czas_ze_stopera += 1;
+    delay(1000);
+  }
+}
