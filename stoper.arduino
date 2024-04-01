@@ -32,4 +32,4 @@ lcd.print(wartosc + stoper);
  delay(1000000000000000000000);
 lcd.clear();
 }
-}# stoper
+}
